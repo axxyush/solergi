@@ -4,38 +4,40 @@ import { BarChart } from "@mui/x-charts/BarChart";
 export default function ChartsOverviewDemo(props) {
   return (
     <>
-      <div
-        style={{
-          borderRadius: "30px",
-          border: "2px solid #16423c",
-          marginBottom: "70px",
-        }}
-        className="container p-4 bg-light col-xxl-8 px-4 py-5"
-      >
-        <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
-          <div className="col-lg-6">
-            <h1 className="display-7  fw-bold text-body-light lh-1 mb-3">
-              Data
-            </h1>
-            <p className=" ">
-              <ul>
-                <li>Estimated Monthly Savings: ${props.savings}</li>
-                <li>Payback Period: {props.paybackPeriod} months</li>
-                <li>Bill after Solar Installation: ${props.newBill} </li>
-                <li>
-                  Assumptions are: Solar panel efficiency factor is 85%, initial
-                  investment cost is $10,000, and CO₂ emissions factor is 0.92
-                  kg CO₂ per kWh.
-                </li>
-              </ul>
-            </p>
+      <div className="container mb-5 d-flex justify-content-center mb-5">
+        <div class="dashboard">
+          <div className="texts">
+            <h2 className="text-dark">
+              <b>Data</b>
+            </h2>
+            <ul className="text-dark">
+              <li>
+                Estimated Monthly Savings:{" "}
+                <b className="text-success">${props.savings}</b>
+              </li>
+              <li>
+                Payback Period: <b>{props.paybackPeriod}</b> months
+              </li>
+              <li>
+                Bill after Solar Installation: <b>${props.newBill}</b>{" "}
+              </li>
+              <li>
+                Environmental Impact:{" "}
+                <b className="text-success">{props.environmentalImpact}</b> kg
+                CO₂ saved per month
+              </li>
+              <li>
+                <b>Assumptions are:</b> Solar panel efficiency factor is 85%,
+                initial investment cost is $10,000, and CO₂ emissions factor is
+                0.92 kg CO₂ per kWh.
+              </li>
+            </ul>
           </div>
-
-          <div className="col-10 col-sm-8 col-lg-6">
+          <div style={{ marginLeft: "100px" }} className="charts">
             <BarChart
               series={[{ data: [props.before, props.after] }]}
               height={200}
-              width={400}
+              width={300}
               sx={{ color: "secondary.main" }}
               xAxis={[
                 { data: ["Before Solar", "After Solar"], scaleType: "band" },

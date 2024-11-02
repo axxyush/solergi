@@ -7,6 +7,10 @@ import Footer from "./Footer";
 function Home() {
   const { register, handleSubmit } = useForm();
 
+  const handleRefresh = () => {
+    window.location.reload(); // This will refresh the page
+  };
+
   // State to track calculated data
   const [savings, setSavings] = useState(null);
   const [newBill, setNewBill] = useState(null);
@@ -114,7 +118,16 @@ function Home() {
                 </button>
               </form>
             ) : (
-              <h2>See results below</h2>
+              <>
+                <h6>See results below!</h6>
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary"
+                  onClick={handleRefresh}
+                >
+                  Enter different data
+                </button>
+              </>
             )}
           </div>
         </div>
@@ -127,6 +140,7 @@ function Home() {
           savings={savings}
           paybackPeriod={paybackPeriod}
           newBill={newBill}
+          environmentalImpact={environmentalImpact}
         />
       )}
       <Footer />
